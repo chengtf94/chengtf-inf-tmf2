@@ -91,9 +91,9 @@ public class PluginManager {
 
             initContainer();
 
-
-
-
+//            initPluginExtendInfo();
+//
+//
 
 
 
@@ -165,7 +165,7 @@ public class PluginManager {
 
         Container container = ContainerManager.createContainer(factory);
 
-        ContainerUtils.setAppPluginKey(container, pluginKeys.toArray(new String[0]));
+//        ContainerUtils.setAppPluginKey(container, pluginKeys.toArray(new String[0]));
 
     }
 

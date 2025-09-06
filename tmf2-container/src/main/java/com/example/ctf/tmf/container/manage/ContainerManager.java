@@ -179,12 +179,7 @@ public class ContainerManager {
             return null;
         }
         long start = System.currentTimeMillis();
-        factory.create();
-
-
-
-
-        return null;
+        return factory.create();
     }
 
 

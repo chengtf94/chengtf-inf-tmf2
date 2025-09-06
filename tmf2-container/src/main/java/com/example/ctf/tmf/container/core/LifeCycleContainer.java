@@ -295,4 +295,7 @@ public abstract class LifeCycleContainer implements Container {
     }
 
 
+    public void addLifeCycleListener(Listener listener) {
+        listeners.add(listener);
+    }
 }

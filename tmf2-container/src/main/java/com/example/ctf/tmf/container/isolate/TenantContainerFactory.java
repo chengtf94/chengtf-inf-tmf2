@@ -24,12 +24,7 @@ public class TenantContainerFactory extends LifeCycleContainerFactory {
         if (StringUtils.isBlank(name) || StringUtils.isBlank(path) || null == type) {
             throw new ContainerException("INVALID");
         }
-        LifeCycleContainer container;
-        if (ContainerManager.isEnableTenant()) {
-            container = new TenantLifeCycleContainer(name, path, type, parentApplicationContext, parentClassLoader, fromReload);
-        } else {
-            container = new GenericLifeCycleContainer(name, path, type, parentApplicationContext, parentClassLoader, fromReload);
-        }
+        LifeCycleContainer container = new GenericLifeCycleContainer(name, path, type, parentClassLoader, parentApplicationContext, fromReload);
         for (Listener listener : listeners) {
             container.addLifeCycleListener(listener);
         }

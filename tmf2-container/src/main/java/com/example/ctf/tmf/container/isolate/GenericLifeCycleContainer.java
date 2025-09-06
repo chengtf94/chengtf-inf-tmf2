@@ -11,8 +11,16 @@ import org.springframework.context.ApplicationContext;
  */
 public class GenericLifeCycleContainer extends LifeCycleContainer {
 
-    public GenericLifeCycleContainer(String name, String path, ContainerType type, ClassLoader parentClassLoader, ApplicationContext parentApplicationContext, boolean fromReload) {
+    public GenericLifeCycleContainer(String name, String path, ContainerType type,
+                                     ClassLoader parentClassLoader,
+                                     ApplicationContext parentApplicationContext,
+                                     boolean fromReload) {
         super(name, path, type, parentClassLoader, parentApplicationContext, fromReload);
+    }
+
+    @Override
+    protected void handleResource(Runnable runnable) {
+        runnable.run();;
     }
 
 }
