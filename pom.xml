@@ -28,6 +28,8 @@
         <fastjson_version>1.2.83</fastjson_version>
         <commons-lang3_version>3.3.2</commons-lang3_version>
         <commons-collections4_version>4.4</commons-collections4_version>
+        <commons-io_version>2.6</commons-io_version>
+        <commons-digester_verson>3.2</commons-digester_verson>
         <mapstruct-jdk8_version>1.3.0.Final</mapstruct-jdk8_version>
         <aviator_version>5.4.2</aviator_version>
         <groovy_version>4.0.19</groovy_version>
@@ -114,6 +116,24 @@
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-collections4</artifactId>
                 <version>${commons-collections4_version}</version>
+            </dependency>
+            <!-- commons-io -->
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons-io_version}</version>
+            </dependency>
+            <!-- commons-digester -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-digester3</artifactId>
+                <version>${commons-digester_verson}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>cglib</groupId>
+                        <artifactId>cglib</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <!-- fastjson -->
             <dependency>
