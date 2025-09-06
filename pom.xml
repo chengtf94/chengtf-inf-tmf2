@@ -9,10 +9,380 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
+    <modules>
+        <module>tmf2-core</module>
+        <module>tmf2-model</module>
+        <module>tmf2-sample</module>
+        <module>tmf2-container</module>
+    </modules>
+
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <lombok_version>1.18.6</lombok_version>
+        <guava_version>32.1.3-jre</guava_version>
+        <caffeine_version>2.9.3</caffeine_version>
+        <hutool_version>5.8.25</hutool_version>
+        <slf4j_version>1.7.32</slf4j_version>
+        <fastjson_version>1.2.83</fastjson_version>
+        <commons-lang3_version>3.3.2</commons-lang3_version>
+        <commons-collections4_version>4.4</commons-collections4_version>
+        <mapstruct-jdk8_version>1.3.0.Final</mapstruct-jdk8_version>
+        <aviator_version>5.4.2</aviator_version>
+        <groovy_version>4.0.19</groovy_version>
+        <groovy_sandbox_version>1.19</groovy_sandbox_version>
+        <openapi_version>2.1.0</openapi_version>
+        <ant-design__icons-vue_version>6.0.1</ant-design__icons-vue_version>
+        <!-- SpringBoot：2.7.18 -->
+        <!-- Spring：5.3.31 -->
+        <spring_boot_version>2.7.18</spring_boot_version>
+        <spring_cloud_version>2021.0.9</spring_cloud_version>
+        <spring_cloud_alibaba_version>2021.0.5.0</spring_cloud_alibaba_version>
+        <spring_retry_version>1.3.1</spring_retry_version>
+        <druid-spring-boot-starter_version>1.2.22</druid-spring-boot-starter_version>
+        <mybatis-spring-boot-starter_version>2.3.2</mybatis-spring-boot-starter_version>
+        <mybatis_version>3.5.14</mybatis_version>
+        <dubbo-spring-boot-starter_version>2.7.18</dubbo-spring-boot-starter_version>
+        <dubbo_version>2.7.23</dubbo_version>
+        <redisson-spring-boot-starter_version>3.28.0</redisson-spring-boot-starter_version>
+        <prometheus_version>1.10.6</prometheus_version>
+        <httpclient_version>4.5.13</httpclient_version>
+        <transmittable-thread-local_version>2.14.2</transmittable-thread-local_version>
+        <disruptorVersion>3.4.4</disruptorVersion>
+        <conversantDisruptorVersion>1.2.15</conversantDisruptorVersion>
+        <jackson_version>2.14.2</jackson_version>
+        <junit_version>4.13.1</junit_version>
     </properties>
+
+    <dependencyManagement>
+        <dependencies>
+
+            <!-- tmf2-core -->
+            <dependency>
+                <groupId>org.example</groupId>
+                <artifactId>tmf2-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <!-- tmf2-model -->
+            <dependency>
+                <groupId>org.example</groupId>
+                <artifactId>tmf2-model</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <!-- tmf2-container -->
+            <dependency>
+                <groupId>org.example</groupId>
+                <artifactId>tmf2-container</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!-- 工具包 -->
+            <!-- lombok -->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok_version}</version>
+                <scope>compile</scope>
+            </dependency>
+            <!-- guava -->
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava_version}</version>
+            </dependency>
+            <!-- caffeine -->
+            <dependency>
+                <groupId>com.github.ben-manes.caffeine</groupId>
+                <artifactId>caffeine</artifactId>
+                <version>${caffeine_version}</version>
+            </dependency>
+            <!-- hutool -->
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool_version}</version>
+            </dependency>
+            <!-- commons-lang3 -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3_version}</version>
+            </dependency>
+            <!-- commons-collections4 -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-collections4</artifactId>
+                <version>${commons-collections4_version}</version>
+            </dependency>
+            <!-- fastjson -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson_version}</version>
+            </dependency>
+            <!-- mapstruct -->
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct-jdk8</artifactId>
+                <version>${mapstruct-jdk8_version}</version>
+            </dependency>
+
+            <!-- spring体系 -->
+            <!-- spring-boot -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-parent</artifactId>
+                <version>${spring_boot_version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- spring-cloud -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring_cloud_version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- spring-cloud-alibaba -->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring_cloud_alibaba_version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- spring-retry -->
+            <dependency>
+                <groupId>org.springframework.retry</groupId>
+                <artifactId>spring-retry</artifactId>
+                <version>${spring_retry_version}</version>
+            </dependency>
+            <!-- druid-spring-boot-starter -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid-spring-boot-starter_version}</version>
+            </dependency>
+            <!-- mybatis-spring-boot-starter -->
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${mybatis-spring-boot-starter_version}</version>
+            </dependency>
+            <!-- mybatis -->
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis</artifactId>
+                <version>${mybatis_version}</version>
+            </dependency>
+            <!-- dubbo-spring-boot-starter -->
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-spring-boot-starter</artifactId>
+                <version>${dubbo-spring-boot-starter_version}</version>
+            </dependency>
+            <!-- dubbo -->
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo</artifactId>
+                <version>${dubbo_version}</version>
+            </dependency>
+            <!-- redisson-spring-boot-starter< -->
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson-spring-boot-starter</artifactId>
+                <version>${redisson-spring-boot-starter_version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.testcontainers</groupId>
+                        <artifactId>junit-jupiter</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.junit.jupiter</groupId>
+                        <artifactId>junit-jupiter-engine</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <!-- openapi -->
+            <dependency>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+                <version>${openapi_version}</version>
+            </dependency>
+            <!-- ant-design__icons-vue -->
+            <dependency>
+                <groupId>org.webjars.npm</groupId>
+                <artifactId>ant-design__icons-vue</artifactId>
+                <version>${ant-design__icons-vue_version}</version>
+            </dependency>
+            <!-- prometheus -->
+            <dependency>
+                <groupId>io.micrometer</groupId>
+                <artifactId>micrometer-registry-prometheus</artifactId>
+                <version>${prometheus_version}</version>
+            </dependency>
+            <!-- httpclient -->
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>${httpclient_version}</version>
+            </dependency>
+            <!-- transmittable-thread-local -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>transmittable-thread-local</artifactId>
+                <version>${transmittable-thread-local_version}</version>
+            </dependency>
+            <!-- disruptor -->
+            <dependency>
+                <groupId>com.lmax</groupId>
+                <artifactId>disruptor</artifactId>
+                <version>${disruptorVersion}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.conversantmedia</groupId>
+                <artifactId>disruptor</artifactId>
+                <version>${conversantDisruptorVersion}</version>
+            </dependency>
+            <!-- tomcat -->
+            <dependency>
+                <groupId>org.apache.tomcat.embed</groupId>
+                <artifactId>tomcat-embed-core</artifactId>
+                <version>9.0.83</version>
+                <scope>compile</scope>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>tomcat-annotations-api</artifactId>
+                        <groupId>org.apache.tomcat</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <!-- netty -->
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-all</artifactId>
+                <version>4.1.56.Final</version>
+            </dependency>
+            <!-- jackson -->
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson_version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>${jackson_version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
+                <version>${jackson_version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.codehaus.jackson</groupId>
+                <artifactId>jackson-core-asl</artifactId>
+                <version>1.9.13</version>
+            </dependency>
+            <!-- hessian -->
+            <dependency>
+                <groupId>com.caucho</groupId>
+                <artifactId>hessian</artifactId>
+                <version>4.0.38</version>
+            </dependency>
+            <!-- zookeeper -->
+            <dependency>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-framework</artifactId>
+                <version>2.12.0</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>log4j</groupId>
+                        <artifactId>log4j</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <!-- curator -->
+            <dependency>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-recipes</artifactId>
+                <version>2.12.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-x-discovery</artifactId>
+                <version>2.12.0</version>
+            </dependency>
+            <!-- cglib -->
+            <dependency>
+                <groupId>cglib</groupId>
+                <artifactId>cglib</artifactId>
+                <version>3.3.0</version>
+            </dependency>
+            <!-- asm -->
+            <dependency>
+                <groupId>org.ow2.asm</groupId>
+                <artifactId>asm</artifactId>
+                <version>9.7</version>
+            </dependency>
+            <!-- javassist -->
+            <dependency>
+                <groupId>org.javassist</groupId>
+                <artifactId>javassist</artifactId>
+                <version>3.22.0-CR2</version>
+            </dependency>
+            <!-- bytebuddy -->
+            <dependency>
+                <groupId>net.bytebuddy</groupId>
+                <artifactId>byte-buddy</artifactId>
+                <version>1.15.0</version>
+            </dependency>
+            <!-- aviator -->
+            <dependency>
+                <groupId>com.googlecode.aviator</groupId>
+                <artifactId>aviator</artifactId>
+                <version>${aviator_version}</version>
+            </dependency>
+            <!-- groovy -->
+            <dependency>
+                <groupId>org.apache.groovy</groupId>
+                <artifactId>groovy</artifactId>
+                <version>${groovy_version}</version>
+            </dependency>
+            <!-- groovy-sandbox -->
+            <dependency>
+                <groupId>org.kohsuke</groupId>
+                <artifactId>groovy-sandbox</artifactId>
+                <version>${groovy_sandbox_version}</version>
+            </dependency>
+            <!-- druid -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>1.2.7</version>
+            </dependency>
+            <!-- 并发组件包 -->
+            <dependency>
+                <groupId>net.tascalate</groupId>
+                <artifactId>net.tascalate.concurrent</artifactId>
+                <version>0.9.7</version>
+            </dependency>
+            <!-- junit -->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit_version}</version>
+                <scope>test</scope>
+            </dependency>
+            <!-- edas-sdk -->
+            <dependency>
+                <groupId>com.alibaba.edas</groupId>
+                <artifactId>edas-sdk</artifactId>
+                <version>1.8.3</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
 </project>
