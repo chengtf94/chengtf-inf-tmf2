@@ -33,7 +33,7 @@ public class FilePathUtils {
         if (classFilePath.isDirectory()) {
             return classFilePath + CLASS_FILE_PATH_SUFFIX + CLASS_OUTPUT;
         } else {
-            return filePath.substring(0, filePath.lastIndexOf(File.separator)) + CLASS_FILE_PATH_SUFFIX + CLASS_OUTPUT
+            return filePath.substring(0, filePath.lastIndexOf(File.separator)) + CLASS_FILE_PATH_SUFFIX + CLASS_OUTPUT;
         }
     }
 
